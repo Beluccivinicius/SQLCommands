@@ -1,4 +1,3 @@
-
 -- Criando o Banco de dados db_Rh
 CREATE DATABASE db_Rh;
 
@@ -44,4 +43,22 @@ SET SQL_SAFE_UPDATES = 0;
 -- UPDATE na area de trabalho: desenvolvedor
 UPDATE tb_pessoa SET salario = 4000.99 WHERE areatrabalho = "desenvolvedor";
 
+-- Criando Outra tabela para se relacionar com a tb_pessoas
+CREATE TABLE tb_departamento(
+id BIGINT AUTO_INCREMENT,
+id_departamento BIGINT,
+PRIMARY KEY(id)
+);
 
+
+
+ALTER TABLE tb_funcao MODIFY COLUMN cargo BIGINT NOT NULL;
+
+-- Populando a tabela tb_area
+INSERT INTO tb_area (nomearea, quantidadepessoa) VALUES ("Administrativo",  100),
+("Segurança", 50), ("Desenvolvimento de software", 30), ("Qualidade", 20);
+
+-- Visualizando dados tb_area
+SELECT * FROM tb_area; 
+
+ALTER TABLE tb_funcionario ADD CONSTRAINT fk_funcionarios_funcao FOREIGN KEY (id) REFERENCES tb_funcao(id); 
